@@ -13,7 +13,7 @@ namespace Spaceinvaders
         Vector2 m_PlayerPos;
         Vector2 m_PlayerVel;
 
-        Game1 m_world;
+        World m_world;
 
         public void LoadContent()
         {

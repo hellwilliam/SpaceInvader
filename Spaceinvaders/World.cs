@@ -7,7 +7,7 @@ namespace Spaceinvaders
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class World : Game
     {
         GraphicsDeviceManager m_graphics;
         SpriteBatch m_spriteBatch;
@@ -16,7 +16,7 @@ namespace Spaceinvaders
 
         SpriteFont m_font;
 
-        public Game1()
+        public World()
         {
             m_graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
