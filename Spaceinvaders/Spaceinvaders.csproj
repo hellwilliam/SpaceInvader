@@ -38,8 +38,13 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Entity\Dynamic\Body\Body.cs" />
+    <Compile Include="Entity\Dynamic\Body\Characters\Characters.cs" />
+    <Compile Include="Entity\Dynamic\Body\Characters\Enemys\Enemys.cs" />
+    <Compile Include="Entity\Dynamic\Dynamic.cs" />
+    <Compile Include="Entity\Entity.cs" />
     <Compile Include="World.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Entity\Dynamic\Body\Characters\Player\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -59,10 +64,7 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entity\Dynamic\Body\Characters\Enemys\" />
-    <Folder Include="Entity\Dynamic\Body\Characters\Player\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
+using System;
 
 namespace Spaceinvaders
 {
@@ -12,9 +14,20 @@ namespace Spaceinvaders
         GraphicsDeviceManager m_graphics;
         SpriteBatch m_spriteBatch;
 
-        Vector2 m_screenRes = new Vector2(800.0f, 600.0f);
+        public List<Entity> m_entities = new List<Entity>();
 
-        SpriteFont m_font;
+        public KeyboardState m_prevKeyboardState;
+        public MouseState m_prevMouseState;
+
+        public Vector2 m_screenRes = new Vector2(800.0f, 600.0f);
+
+        public SpriteFont m_font;
+
+        public Texture2D m_texPlayer;
+        public Texture2D m_texEnemy1;
+        public Texture2D m_texEnemy2;
+        public Texture2D m_texEnemy3;
+        public Texture2D m_texSpaceship;
 
         public World()
         {
@@ -68,7 +81,15 @@ namespace Spaceinvaders
 
             // TODO: Add your update logic here
 
+            List<Entity> tmp = new List<Entity>(m_entities);
+            foreach (Entity e in tmp)
+                e.Update(gameTime);
+
             base.Update(gameTime);
+
+            m_prevKeyboardState = Keyboard.GetState();
+
+            m_prevMouseState = Mouse.GetState();
         }
 
         /// <summary>
