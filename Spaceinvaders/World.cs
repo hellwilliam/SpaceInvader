@@ -75,7 +75,7 @@ namespace Spaceinvaders
 
             //m_font = Content.Load<SpriteFont>(" ");
 
-            m_entities.Add(new Player(this, m_screenRes * 0.5f, new Vector2(32, 32), m_texPlayer));
+            m_entities.Add(new Player(this, m_screenRes * 0.5f, new Vector2(32, 16), m_texPlayer));
             //m_entities.Add(new Enemys(this, m_screenRes * 0.5f, new Vector2(32, 32), m_texPlayer));
 
         // TODO: use this.Content to load your game content here

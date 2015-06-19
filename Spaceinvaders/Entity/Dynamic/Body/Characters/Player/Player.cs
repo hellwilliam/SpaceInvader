@@ -44,7 +44,7 @@ namespace Spaceinvaders
 
                 m_world.m_entities.Add(
                     new Bullet(m_world, m_pos, new Vector2(4, 8), m_world.m_texBullet,
-                        100.0f, 500.0f, 5.0f)
+                        200.0f, float.MaxValue, 0.0f)
                 );
             }
 
