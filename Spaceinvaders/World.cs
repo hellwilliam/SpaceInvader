@@ -32,7 +32,15 @@ namespace Spaceinvaders
         public World()
         {
             m_graphics = new GraphicsDeviceManager(this);
+
+            m_graphics.PreferredBackBufferWidth = (int)m_screenRes.X;
+            m_graphics.PreferredBackBufferHeight = (int)m_screenRes.Y;
+
+            m_graphics.ApplyChanges();
+
             Content.RootDirectory = "Content";
+
+            IsMouseVisible = true;
         }
 
         /// <summary>
@@ -56,6 +64,17 @@ namespace Spaceinvaders
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             m_spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            //m_texEnemy1 = Content.Load<Texture2D>(" ");
+            //m_texEnemy2 = Content.Load<Texture2D>(" ");
+            //m_texEnemy3 = Content.Load<Texture2D>(" ");
+            m_texPlayer = Content.Load<Texture2D>("player");
+            //m_texSpaceship = Content.Load<Texture2D>(" ");
+
+            //m_font = Content.Load<SpriteFont>(" ");
+
+            //m_entities.Add(new Player(this, m_screenRes * 0.5f, new Vector2(32, 32), m_texPlayer));
+            //m_entities.Add(new Enemys(this, m_screenRes * 0.5f, new Vector2(32, 32), m_texPlayer));
 
         // TODO: use this.Content to load your game content here
         }
@@ -101,6 +120,14 @@ namespace Spaceinvaders
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            m_spriteBatch.Begin(SpriteSortMode.BackToFront,
+                               BlendState.AlphaBlend,
+                               SamplerState.PointClamp);
+
+            foreach (Entity e in m_entities)
+                e.Draw(gameTime, m_spriteBatch);
+
+            m_spriteBatch.End();
 
             base.Draw(gameTime);
         }

@@ -6,32 +6,39 @@ using System.Collections.Generic;
 
 namespace Spaceinvaders
 {
-    public class Player
+    public class Player : Characters
     {
-        Texture2D m_TexPlayer;
+           public Player(World world, Vector2 pos, Vector2 size, Texture2D tex,
+                      float maxVel = 200.0f, float accel = 1000.0f, float friction = 5.0f)
+            : base(world, pos, size, tex, maxVel, accel, friction) { }
 
-        Vector2 m_PlayerPos;
-        Vector2 m_PlayerVel;
-
-        World m_world;
-
-        public void LoadContent()
+        public override void Update(GameTime gameTime)
         {
-            m_TexPlayer = m_world.Content.Load <Texture2D>("player");
-        }
-
-        public void Update() 
-        {
-            Vector2 dir = Vector2.Zero;
+            m_dir = Vector2.Zero;
 
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
-                dir.X -= 1.0f;
+                m_dir.X += 1.0f;
 
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
-                dir.X += 1.0f;
-        }
+                m_dir.X -= 1.0f;
 
-        public void Draw(GameTime gametime)
+            if (Keyboard.GetState().IsKeyDown(Keys.Up))
+                m_dir.Y -= 1.0f;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Down))
+                m_dir.Y += 1.0f;
+
+            //Put bullets here
+            //if (Keyboard.GetState().IsKeyDown(Keys.Space) &&
+            //    !m_world.m_prevKeyboardState.IsKeyDown(Keys.Space)) {
+
+            //    m_world.m_entities.Add(
+            //        new NPC(m_world, m_pos, new Vector2(16, 16), m_world.m_texNPC,
+            //            100.0f, 500.0f, 5.0f)
+            //    );
+            //}
+
+            base.Update(gameTime);
         {
 
         }
