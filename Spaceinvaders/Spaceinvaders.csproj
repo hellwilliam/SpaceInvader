@@ -56,6 +56,7 @@
     <Compile Include="Entity\Dynamic\Body\Body.cs" />
     <Compile Include="Entity\Dynamic\Body\Characters\Characters.cs" />
     <Compile Include="Entity\Dynamic\Body\Characters\Enemys\Enemys.cs" />
+    <Compile Include="Entity\Dynamic\Body\Characters\Player\Bullet.cs" />
     <Compile Include="Entity\Dynamic\Dynamic.cs" />
     <Compile Include="Entity\Entity.cs" />
     <Compile Include="World.cs" />
@@ -71,6 +72,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bullet.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\player.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

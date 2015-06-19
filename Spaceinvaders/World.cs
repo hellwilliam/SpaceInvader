@@ -28,7 +28,8 @@ namespace Spaceinvaders
         public Texture2D m_texEnemy2;
         public Texture2D m_texEnemy3;
         public Texture2D m_texSpaceship;
-
+        public Texture2D m_texBullet;
+       
         public World()
         {
             m_graphics = new GraphicsDeviceManager(this);
@@ -70,6 +71,7 @@ namespace Spaceinvaders
             //m_texEnemy3 = Content.Load<Texture2D>(" ");
             m_texPlayer = Content.Load<Texture2D>("player");
             //m_texSpaceship = Content.Load<Texture2D>(" ");
+            m_texBullet = Content.Load<Texture2D>("bullet");
 
             //m_font = Content.Load<SpriteFont>(" ");
 
