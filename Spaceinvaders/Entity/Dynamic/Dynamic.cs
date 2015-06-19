@@ -6,13 +6,13 @@ using System.Collections.Generic;
 
 namespace Spaceinvaders
 {
-    class Dynamic
+    public class Dynamic : Entity
     {
         public Vector2 m_pos;
         public Vector2 m_size;
         public Texture2D m_tex;
 
-        public Dynamic(World world, Vector2 pos, Vector2 size, Texture2D tex)
+        public Dynamic(World world, Vector2 pos, Vector2 size, Texture2D tex) : base(world)
         {
             m_pos = pos;
             m_size = size;

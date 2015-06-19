@@ -8,8 +8,8 @@ namespace Spaceinvaders
 {
     public class Player : Characters
     {
-           public Player(World world, Vector2 pos, Vector2 size, Texture2D tex,
-                      float maxVel = 200.0f, float accel = 1000.0f, float friction = 5.0f)
+        public Player(World world, Vector2 pos, Vector2 size, Texture2D tex,
+                   float maxVel = 200.0f, float accel = 1000.0f, float friction = 5.0f)
             : base(world, pos, size, tex, maxVel, accel, friction) { }
 
         public override void Update(GameTime gameTime)
@@ -22,11 +22,11 @@ namespace Spaceinvaders
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
                 m_dir.X -= 1.0f;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
-                m_dir.Y -= 1.0f;
+            //if (Keyboard.GetState().IsKeyDown(Keys.Up))
+            //    m_dir.Y -= 1.0f;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Down))
-                m_dir.Y += 1.0f;
+            //if (Keyboard.GetState().IsKeyDown(Keys.Down))
+            //    m_dir.Y += 1.0f;
 
             //Put bullets here
             //if (Keyboard.GetState().IsKeyDown(Keys.Space) &&
@@ -39,8 +39,9 @@ namespace Spaceinvaders
             //}
 
             base.Update(gameTime);
-        {
+            {
 
+            }
         }
     }
 }
