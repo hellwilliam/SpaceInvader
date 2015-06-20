@@ -15,7 +15,7 @@ namespace Spaceinvaders
         public override void Update(GameTime gameTime)
         {
             m_dir = Vector2.Zero;
-
+            
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
                 m_dir.X += 1.0f;
 
