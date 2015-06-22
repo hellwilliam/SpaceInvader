@@ -44,12 +44,54 @@ namespace Spaceinvaders
                 mag = m_maxVel;
             }
 
-            m_pos += m_vel * dt;
+            for (int a = 0; a <= 1; a++)
+            {
+                Vector2 testPos = m_pos;
+
+                if (a == 0)
+                    testPos.X += m_vel.X * dt;
+                else
+                    testPos.Y += m_vel.Y * dt;
+
+                Vector2 myMin = testPos - m_size * 0.5f;
+                Vector2 myMax = testPos + m_size * 0.5f;
+
+                bool collides = false;
+
+                foreach (Entity e in m_world.m_entities)
+                {
+                    if (CollidesWithMe(e))
+                    {
+                        if (((Dynamic)e).TestOverlapRect(myMin, myMax))
+                        {
+                            collides = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!collides)
+                {
+                    m_pos = testPos;
+                }
+                else
+                {
+                    if (a == 0)
+                        m_vel.X = 0.0f;
+                    else
+                        m_vel.Y = 0.0f;
+                }
+            }
 
             if (mag > 0.0f)
                 m_vel *= (mag - mag * m_friction * dt) / mag;
 
             base.Update(gameTime);
+        }
+
+        public virtual bool CollidesWithMe(Entity e)
+        {
+            return (e != this) && (e is Dynamic);
         }
     }
 }

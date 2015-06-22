@@ -30,5 +30,21 @@ namespace Spaceinvaders
 
             spriteBatch.Draw(m_tex, m_pos, null, null, origin, 0.0f, scale, Color.White);
         }
+
+        public bool TestOverlapRect(Vector2 otherMin, Vector2 otherMax)
+        {
+            Vector2 myMin = m_pos - m_size * 0.5f;
+            Vector2 myMax = m_pos + m_size * 0.5f;
+
+            if ((myMin.X < otherMax.X) && (myMax.X > otherMin.X) &&
+                (myMin.Y < otherMax.Y) && (myMax.Y > otherMin.Y))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
