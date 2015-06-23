@@ -6,10 +6,7 @@ using System;
 
 namespace Spaceinvaders
 {
-    /// <summary>
-    /// This is the main type for your game.
-    /// </summary>
-    public class World : Game
+   public class World : Game
     {
         GraphicsDeviceManager m_graphics;
         SpriteBatch m_spriteBatch;
@@ -58,12 +55,13 @@ namespace Spaceinvaders
             //m_texEnemy2 = Content.Load<Texture2D>(" ");
             //m_texEnemy3 = Content.Load<Texture2D>(" ");
             m_texPlayer = Content.Load<Texture2D>("player");
-            //m_texSpaceship = Content.Load<Texture2D>(" ");
+            m_texSpaceship = Content.Load<Texture2D>("spaceship");
             m_texBullet = Content.Load<Texture2D>("bullet");
 
             //m_font = Content.Load<SpriteFont>(" ");
 
-            m_entities.Add(new Player(this, new Vector2 (m_screenRes.X * 0.5f, m_screenRes.Y * 0.85f), new Vector2(32, 16), m_texPlayer, 125.0f, 10000.0f, 50.0f));
+            //m_entities.Add(new Player(this, new Vector2 (m_screenRes.X * 0.5f, m_screenRes.Y * 0.85f), new Vector2(32, 16), m_texPlayer, 125.0f, 10000.0f, 50.0f));
+            m_entities.Add(new Spaceship(this, new Vector2(m_screenRes.X * 0.5f, m_screenRes.Y * 0.10f), new Vector2(32, 14), m_texSpaceship, 125.0f, 10000.0f, 50.0f));
             //m_entities.Add(new Enemys(this, m_screenRes * 0.5f, new Vector2(32, 32), m_texPlayer));
 
         // TODO: use this.Content to load your game content here

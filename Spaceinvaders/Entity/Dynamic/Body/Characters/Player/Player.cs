@@ -22,22 +22,24 @@ namespace Spaceinvaders
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
                 m_dir.X -= 1.0f;
 
-            //if (Keyboard.GetState().IsKeyDown(Keys.Up))
-            //    m_dir.Y -= 1.0f;
+//        //    //----------------------------------------------------------------------------------------------------------------------
+//        //    //if (Keyboard.GetState().IsKeyDown(Keys.Up))
+//        //    //    m_dir.Y -= 1.0f;
 
-            //if (Keyboard.GetState().IsKeyDown(Keys.Down))
-            //    m_dir.Y += 1.0f;
+//        //    //if (Keyboard.GetState().IsKeyDown(Keys.Down))
+//        //    //    m_dir.Y += 1.0f;
 
-            //Put bullets here
-            //if (Keyboard.GetState().IsKeyDown(Keys.Space) &&
-            //    !m_world.m_prevKeyboardState.IsKeyDown(Keys.Space)) {
+//        //    //Put bullets here
+//        //    //if (Keyboard.GetState().IsKeyDown(Keys.Space) &&
+//        //    //    !m_world.m_prevKeyboardState.IsKeyDown(Keys.Space)) {
 
-            //    m_world.m_entities.Add(
-            //        new NPC(m_world, m_pos, new Vector2(16, 16), m_world.m_texNPC,
-            //            100.0f, 500.0f, 5.0f)
-            //    );
-            //}
-
+//        //    //    m_world.m_entities.Add(
+//        //    //        new NPC(m_world, m_pos, new Vector2(16, 16), m_world.m_texNPC,
+//        //    //            100.0f, 500.0f, 5.0f)
+//        //    //    );
+//        //    //}
+//        //    //----------------------------------------------------------------------------------------------------------------------
+           
             if (Keyboard.GetState().IsKeyDown(Keys.Space) &&
                 !m_world.m_prevKeyboardState.IsKeyDown(Keys.Space))
             {
