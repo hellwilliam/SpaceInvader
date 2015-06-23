@@ -14,8 +14,9 @@ namespace Spaceinvaders
 
         public override void Update(GameTime gameTime)
         {
-            m_dir = Vector2.Zero;
-                     
+            m_dir += Vector2.UnitX;
+
+            base.Update(gameTime);                     
         }  
     }
 }
