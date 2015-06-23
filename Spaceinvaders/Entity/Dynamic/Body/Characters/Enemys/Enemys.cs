@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Spaceinvaders
 {
-    class Enemys
+    class Enemys : Characters
     {
     }
 }
