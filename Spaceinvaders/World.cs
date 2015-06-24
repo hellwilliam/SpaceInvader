@@ -26,7 +26,9 @@ namespace Spaceinvaders
         public Texture2D m_texEnemy3;
         public Texture2D m_texSpaceship;
         public Texture2D m_texBullet;
-       
+
+        public double m_timeStart = 0.0f;
+
         public World()
         {
             m_graphics = new GraphicsDeviceManager(this);
@@ -61,21 +63,33 @@ namespace Spaceinvaders
             //m_font = Content.Load<SpriteFont>(" ");
 
             //m_entities.Add(new Player(this, new Vector2 (m_screenRes.X * 0.5f, m_screenRes.Y * 0.85f), new Vector2(32, 16), m_texPlayer, 125.0f, 10000.0f, 50.0f));
-            m_entities.Add(new Spaceship(this, new Vector2(m_screenRes.X * -0.1f, m_screenRes.Y * 0.10f), new Vector2(32, 14), m_texSpaceship, 125.0f, 10000.0f, 50.0f));
+            //m_entities.Add(new Spaceship(this, new Vector2(m_screenRes.X + 32f, m_screenRes.Y * 0.10f), new Vector2(32, 14), m_texSpaceship, 125.0f, 10000.0f, 50.0f, true));
             //m_entities.Add(new Enemys(this, m_screenRes * 0.5f, new Vector2(32, 32), m_texPlayer));
 
-        // TODO: use this.Content to load your game content here
+            m_timeStart = 3.0f;
+
         }
 
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
         }
 
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            //if (m_timeStart < 0.0f)
+            //{
+            //    m_entities.Add(new Spaceship(this, new Vector2(-32f, m_screenRes.Y * 0.10f), new Vector2(32, 14), m_texSpaceship));
+            //}
+
+            m_timeStart -= gameTime.ElapsedGameTime.TotalSeconds;
+            if (m_timeStart <= 0.0f)
+            {
+                //m_entities.Add(new Spaceship(this, new Vector2(-32f, m_screenRes.Y * 0.10f), new Vector2(32, 14), m_texSpaceship));
+                Exit();
+            }
 
             List<Entity> tmp = new List<Entity>(m_entities);
             foreach (Entity e in tmp)
