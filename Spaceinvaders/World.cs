@@ -12,11 +12,7 @@ namespace Spaceinvaders
         SpriteBatch m_spriteBatch;
 
         public List<Entity> m_entities = new List<Entity>();
-
-        enum TDirection { left, right, down };
-        bool isDescending;
-        bool isRight;
-              
+                           
         public KeyboardState m_prevKeyboardState;
         public MouseState m_prevMouseState;
 
@@ -24,17 +20,15 @@ namespace Spaceinvaders
 
         public SpriteFont m_font;
 
+        int count;
+
         public Texture2D m_texPlayer;
         public Texture2D m_texInvader1;
         public Texture2D m_texInvader2;
         public Texture2D m_texInvader3;
         public Texture2D m_texSpaceship;
         public Texture2D m_texBullet;
-
-        int count; //Timer for the invaders
-        const int moveNow = 20; // How many seconds you want to move the invaders
-        const int step = 16; //How many pixels you want the invaders to move
-
+       
         //public Rectangle m_recInvaders;
 
         public double m_timeStart = 0.0f;
@@ -56,6 +50,8 @@ namespace Spaceinvaders
         protected override void Initialize()
         {
             //m_recInvaders = new Rectangle(0, 0, 16, 16);
+
+            count = 0;
 
             base.Initialize();
         }

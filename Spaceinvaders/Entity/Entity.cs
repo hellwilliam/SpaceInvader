@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Spaceinvaders
 {
-    public class Entity
+    public class Entity : World
     {
         public World m_world;
 
