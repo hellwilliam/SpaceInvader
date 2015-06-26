@@ -35,6 +35,8 @@ namespace Spaceinvaders
         const int moveNow = 20; // How many seconds you want to move the invaders
         const int step = 32; //How many pixels you want the invaders to move
 
+        Rectangle m_recInvaders;
+
         public double m_timeStart = 0.0f;
 
         public World()
