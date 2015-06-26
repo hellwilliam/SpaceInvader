@@ -33,9 +33,9 @@ namespace Spaceinvaders
 
         int count; //Timer for the invaders
         const int moveNow = 20; // How many seconds you want to move the invaders
-        const int step = 32; //How many pixels you want the invaders to move
+        const int step = 16; //How many pixels you want the invaders to move
 
-        Rectangle m_recInvaders;
+        //public Rectangle m_recInvaders;
 
         public double m_timeStart = 0.0f;
 
@@ -55,6 +55,8 @@ namespace Spaceinvaders
 
         protected override void Initialize()
         {
+            //m_recInvaders = new Rectangle(0, 0, 16, 16);
+
             base.Initialize();
         }
 
@@ -63,7 +65,7 @@ namespace Spaceinvaders
             // Create a new SpriteBatch, which can be used to draw textures.
             m_spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            //m_texInvader1 = Content.Load<Texture2D>(" ");
+            m_texInvader1 = Content.Load<Texture2D>("invaders");
             //m_texInvader2 = Content.Load<Texture2D>(" ");
             //m_texInvader3 = Content.Load<Texture2D>(" ");
             m_texPlayer = Content.Load<Texture2D>("player");
@@ -74,9 +76,9 @@ namespace Spaceinvaders
 
             //m_entities.Add(new Player(this, new Vector2 (m_screenRes.X * 0.5f, m_screenRes.Y * 0.85f), new Vector2(32, 16), m_texPlayer, 125.0f, 10000.0f, 50.0f));
             //m_entities.Add(new Spaceship(this, new Vector2(m_screenRes.X + 32f, m_screenRes.Y * 0.10f), new Vector2(32, 14), m_texSpaceship, 125.0f, 10000.0f, 50.0f, true));
-            //m_entities.Add(new Enemys(this, m_screenRes * 0.5f, new Vector2(32, 32), m_texPlayer));
+            m_entities.Add(new Invaders(this, m_screenRes * 0.1f, new Vector2(16, 16), m_texInvader1));
 
-            m_timeStart = 3.0f;
+            //m_timeStart = 3.0f;
 
         }
 
@@ -94,12 +96,12 @@ namespace Spaceinvaders
             //    m_entities.Add(new Spaceship(this, new Vector2(-32f, m_screenRes.Y * 0.10f), new Vector2(32, 14), m_texSpaceship));
             //}
 
-            m_timeStart -= gameTime.ElapsedGameTime.TotalSeconds;
-            if (m_timeStart <= 0.0f)
-            {
+            //m_timeStart -= gameTime.ElapsedGameTime.TotalSeconds;
+            //if (m_timeStart <= 0.0f)
+            //{
                 //m_entities.Add(new Spaceship(this, new Vector2(-32f, m_screenRes.Y * 0.10f), new Vector2(32, 14), m_texSpaceship));
-                Exit();
-            }
+            //    Exit();
+            //}
 
             List<Entity> tmp = new List<Entity>(m_entities);
             foreach (Entity e in tmp)
