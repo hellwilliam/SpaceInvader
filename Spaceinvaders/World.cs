@@ -13,6 +13,10 @@ namespace Spaceinvaders
 
         public List<Entity> m_entities = new List<Entity>();
 
+        enum TDirection { left, right, down };
+        bool isDescending;
+        bool isRight;
+              
         public KeyboardState m_prevKeyboardState;
         public MouseState m_prevMouseState;
 
@@ -21,11 +25,15 @@ namespace Spaceinvaders
         public SpriteFont m_font;
 
         public Texture2D m_texPlayer;
-        public Texture2D m_texEnemy1;
-        public Texture2D m_texEnemy2;
-        public Texture2D m_texEnemy3;
+        public Texture2D m_texInvader1;
+        public Texture2D m_texInvader2;
+        public Texture2D m_texInvader3;
         public Texture2D m_texSpaceship;
         public Texture2D m_texBullet;
+
+        int count; //Timer for the invaders
+        const int moveNow = 20; // How many seconds you want to move the invaders
+        const int step = 32; //How many pixels you want the invaders to move
 
         public double m_timeStart = 0.0f;
 
@@ -53,9 +61,9 @@ namespace Spaceinvaders
             // Create a new SpriteBatch, which can be used to draw textures.
             m_spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            //m_texEnemy1 = Content.Load<Texture2D>(" ");
-            //m_texEnemy2 = Content.Load<Texture2D>(" ");
-            //m_texEnemy3 = Content.Load<Texture2D>(" ");
+            //m_texInvader1 = Content.Load<Texture2D>(" ");
+            //m_texInvader2 = Content.Load<Texture2D>(" ");
+            //m_texInvader3 = Content.Load<Texture2D>(" ");
             m_texPlayer = Content.Load<Texture2D>("player");
             m_texSpaceship = Content.Load<Texture2D>("spaceship");
             m_texBullet = Content.Load<Texture2D>("bullet");
