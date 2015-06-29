@@ -6,8 +6,12 @@ using System.Collections.Generic;
 
 namespace Spaceinvaders
 {
-    public class Entity : World
+    public class Entity
     {
+        public bool isVisible;
+
+        public Vector2 m_screenRes = new Vector2(800, 600);
+
         public World m_world;
 
         public Entity(World world) { m_world = world; }

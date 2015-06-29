@@ -8,6 +8,8 @@ namespace Spaceinvaders
 {
     public class Player : Characters
     {
+        //int count; //Timer for the bullet
+
         public Player(World world, Vector2 pos, Vector2 size, Texture2D tex,
                    float maxVel = 200.0f, float accel = 1000.0f, float friction = 5.0f)
             : base(world, pos, size, tex, maxVel, accel, friction) { }
@@ -15,13 +17,18 @@ namespace Spaceinvaders
         public override void Update(GameTime gameTime)
         {
             m_dir = Vector2.Zero;
-            
+
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
-                m_dir.X += 1.0f;
-
+            {
+                if (m_pos.X < m_world.m_screenRes.X - 80)
+                    m_dir.X += 1.0f;
+            }
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
-                m_dir.X -= 1.0f;
-
+            {
+                if (m_pos.X > 80)
+                    m_dir.X -= 1.0f;
+            }
+        
 //        //    //----------------------------------------------------------------------------------------------------------------------
 //        //    //if (Keyboard.GetState().IsKeyDown(Keys.Up))
 //        //    //    m_dir.Y -= 1.0f;
@@ -40,20 +47,13 @@ namespace Spaceinvaders
 //        //    //}
 //        //    //----------------------------------------------------------------------------------------------------------------------
            
-            if (Keyboard.GetState().IsKeyDown(Keys.Space) &&
-                !m_world.m_prevKeyboardState.IsKeyDown(Keys.Space))
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) && !m_world.m_prevKeyboardState.IsKeyDown(Keys.Space))
             {
-
-                m_world.m_entities.Add(
-                    new Bullet(m_world, m_pos, new Vector2(4, 8), m_world.m_texBullet,
-                        200.0f, float.MaxValue, 0.0f)
-                );
+                m_world.m_entities.Add(new Bullet(m_world, m_pos, new Vector2(4, 8), m_world.m_texBullet, 200.0f, float.MaxValue, 0.0f));
             }
 
             base.Update(gameTime);
-            {
-
-            }
+            
         }
     }
 }

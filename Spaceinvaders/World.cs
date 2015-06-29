@@ -72,7 +72,7 @@ namespace Spaceinvaders
 
             //m_entities.Add(new Player(this, new Vector2 (m_screenRes.X * 0.5f, m_screenRes.Y * 0.85f), new Vector2(32, 16), m_texPlayer, 125.0f, 10000.0f, 50.0f));
             //m_entities.Add(new Spaceship(this, new Vector2(m_screenRes.X + 32f, m_screenRes.Y * 0.10f), new Vector2(32, 14), m_texSpaceship, 125.0f, 10000.0f, 50.0f, true));
-            m_entities.Add(new Invaders(this, m_screenRes * 0.1f, new Vector2(16, 16), m_texInvader1));
+            m_entities.Add(new Invaders(this, new Vector2 (50, m_screenRes.Y * 0.1f), new Vector2(16, 16), m_texInvader1));
 
             //m_timeStart = 3.0f;
 
