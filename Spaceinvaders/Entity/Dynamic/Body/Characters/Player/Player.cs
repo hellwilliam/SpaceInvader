@@ -46,14 +46,12 @@ namespace Spaceinvaders
 //        //    //    );
 //        //    //}
 //        //    //----------------------------------------------------------------------------------------------------------------------
-           
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && !m_world.m_prevKeyboardState.IsKeyDown(Keys.Space))
             {
                 m_world.m_entities.Add(new Bullet(m_world, m_pos, new Vector2(4, 8), m_world.m_texBullet, 200.0f, float.MaxValue, 0.0f));
             }
-
-            base.Update(gameTime);
             
+            base.Update(gameTime);
         }
     }
 }

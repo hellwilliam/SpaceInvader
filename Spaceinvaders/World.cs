@@ -8,7 +8,7 @@ namespace Spaceinvaders
 {
    public class World : Game
     {
-        GraphicsDeviceManager m_graphics;
+        public GraphicsDeviceManager m_graphics;
         SpriteBatch m_spriteBatch;
 
         public List<Entity> m_entities = new List<Entity>();
@@ -17,19 +17,17 @@ namespace Spaceinvaders
         public MouseState m_prevMouseState;
 
         public Vector2 m_screenRes = new Vector2(800.0f, 600.0f);
-
+       
         public SpriteFont m_font;
 
-        int count;
-
+        //int count;
+       
         public Texture2D m_texPlayer;
         public Texture2D m_texInvader1;
         public Texture2D m_texInvader2;
         public Texture2D m_texInvader3;
         public Texture2D m_texSpaceship;
         public Texture2D m_texBullet;
-       
-        //public Rectangle m_recInvaders;
 
         public double m_timeStart = 0.0f;
 
@@ -39,7 +37,7 @@ namespace Spaceinvaders
 
             m_graphics.PreferredBackBufferWidth = (int)m_screenRes.X;
             m_graphics.PreferredBackBufferHeight = (int)m_screenRes.Y;
-
+                      
             m_graphics.ApplyChanges();
 
             Content.RootDirectory = "Content";
@@ -49,9 +47,8 @@ namespace Spaceinvaders
 
         protected override void Initialize()
         {
-            //m_recInvaders = new Rectangle(0, 0, 16, 16);
 
-            count = 0;
+            //count = 0;
 
             base.Initialize();
         }
@@ -60,7 +57,7 @@ namespace Spaceinvaders
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             m_spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            
             m_texInvader1 = Content.Load<Texture2D>("invaders");
             //m_texInvader2 = Content.Load<Texture2D>(" ");
             //m_texInvader3 = Content.Load<Texture2D>(" ");
@@ -72,7 +69,7 @@ namespace Spaceinvaders
 
             //m_entities.Add(new Player(this, new Vector2 (m_screenRes.X * 0.5f, m_screenRes.Y * 0.85f), new Vector2(32, 16), m_texPlayer, 125.0f, 10000.0f, 50.0f));
             //m_entities.Add(new Spaceship(this, new Vector2(m_screenRes.X + 32f, m_screenRes.Y * 0.10f), new Vector2(32, 14), m_texSpaceship, 125.0f, 10000.0f, 50.0f, true));
-            m_entities.Add(new Invaders(this, new Vector2 (50, m_screenRes.Y * 0.1f), new Vector2(16, 16), m_texInvader1));
+            m_entities.Add(new Invaders(this, new Vector2 (m_screenRes.X * 0.5f, m_screenRes.Y * 0.1f), new Vector2(16, 16), m_texInvader1));
 
             //m_timeStart = 3.0f;
 
@@ -80,6 +77,7 @@ namespace Spaceinvaders
 
         protected override void UnloadContent()
         {
+
         }
 
         protected override void Update(GameTime gameTime)

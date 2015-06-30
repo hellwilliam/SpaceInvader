@@ -8,7 +8,7 @@ namespace Spaceinvaders
 {
     class Spaceship : Characters
     {
-        bool m_inverse;
+        //bool m_inverse;
 
         public Spaceship(World world, Vector2 pos, Vector2 size, Texture2D tex,
                    float maxVel = 200.0f, float accel = 10000.0f, float friction = 5.0f, bool inverse = false)

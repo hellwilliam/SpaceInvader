@@ -12,6 +12,8 @@ namespace Spaceinvaders
         public Vector2 m_size;
         public Texture2D m_tex;
 
+        public bool m_inverse;
+
         public Dynamic(World world, Vector2 pos, Vector2 size, Texture2D tex) : base(world)
         {
             m_pos = pos;
