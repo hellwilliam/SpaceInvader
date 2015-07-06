@@ -9,7 +9,7 @@ namespace Spaceinvaders
    public class World : Game
     {
         public GraphicsDeviceManager m_graphics;
-        SpriteBatch m_spriteBatch;
+        public SpriteBatch m_spriteBatch;
 
         public List<Entity> m_entities = new List<Entity>();
                            
@@ -28,6 +28,10 @@ namespace Spaceinvaders
         public Texture2D m_texInvader3;
         public Texture2D m_texSpaceship;
         public Texture2D m_texBullet;
+
+        public Rectangle[,] m_recInvaders;
+        public int rows = 5;
+        public int cols = 10;
 
         public double m_timeStart = 0.0f;
 
@@ -66,13 +70,26 @@ namespace Spaceinvaders
             m_texBullet = Content.Load<Texture2D>("bullet");
 
             //m_font = Content.Load<SpriteFont>(" ");
+            
+            //m_recInvaders = new Rectangle[rows, cols];
+
+            //{
+            //    for (int r = 0; r < rows; r += 1)
+            //        for (int c = 0; c < cols; c += 1)
+            //        {
+            //            m_recInvaders[r, c].Width = m_texInvader1.Width;
+            //            m_recInvaders[r, c].Height = m_texInvader1.Height;
+            //            m_recInvaders[r, c].X = 25 * c;
+            //            m_recInvaders[r, c].Y = 25 * r;
+            //        }
+            //}
 
             //m_entities.Add(new Player(this, new Vector2 (m_screenRes.X * 0.5f, m_screenRes.Y * 0.85f), new Vector2(32, 16), m_texPlayer, 125.0f, 10000.0f, 50.0f));
             //m_entities.Add(new Spaceship(this, new Vector2(m_screenRes.X + 32f, m_screenRes.Y * 0.10f), new Vector2(32, 14), m_texSpaceship, 125.0f, 10000.0f, 50.0f, true));
             m_entities.Add(new Invaders(this, new Vector2 (m_screenRes.X * 0.5f, m_screenRes.Y * 0.1f), new Vector2(16, 16), m_texInvader1));
 
             //m_timeStart = 3.0f;
-
+             
         }
 
         protected override void UnloadContent()
@@ -115,6 +132,10 @@ namespace Spaceinvaders
             m_spriteBatch.Begin(SpriteSortMode.BackToFront,
                                BlendState.AlphaBlend,
                                SamplerState.PointClamp);
+
+            //for (int r = 0; r < rows; r += 1)
+            //    for (int c = 0; c < cols; c += 1)
+            //        m_spriteBatch.Draw(m_texInvader1, m_recInvaders[r, c], Color.Yellow);
 
             foreach (Entity e in m_entities)
                 e.Draw(gameTime, m_spriteBatch);

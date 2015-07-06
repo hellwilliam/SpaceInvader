@@ -13,10 +13,10 @@ namespace Spaceinvaders
 
         public override void Update (GameTime gameTime)
         {
-            m_dir -= Vector2.UnitY;
+          m_dir -= Vector2.UnitY;
             
             base.Update(gameTime);
         }
-       
+        
     }
 }

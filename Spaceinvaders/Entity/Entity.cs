@@ -20,6 +20,8 @@ namespace Spaceinvaders
 
         public Entity(World world) { m_world = world; }
 
+        public virtual void LoadContent() { }
+
         public virtual void Update(GameTime gameTime) { }
 
         public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch) { }

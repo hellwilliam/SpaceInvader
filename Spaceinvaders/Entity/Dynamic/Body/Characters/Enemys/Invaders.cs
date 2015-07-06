@@ -8,23 +8,19 @@ namespace Spaceinvaders
 {
     public class Invaders : Characters
     {
-        //enum TDirection { left, right, down };
-        //bool isDescending;
-        //bool isRight = true;
-
-
-        //bool isLeft;
-
         int count; //Timer for the invaders
         const int moveNow = 30; // How many seconds you want to move the invaders
         const int step = 16; //How many pixels you want the invaders to move
+
+        //Rectangle[,] m_recInvaders;
+        //int rows = 5;
+        //int cols = 10;
 
         public Invaders(World world, Vector2 pos, Vector2 size, Texture2D tex)
             : base(world, pos, size, tex) { }
                
         public override void Update(GameTime gameTime)
         {
-            //int rightside = m_graphics.GraphicsDevice.Viewport.Width;
             int rightside = (int)m_screenRes.X; // Que bruxaria foi essa que o (int) antes do argumento deu certo???
             int leftside = 16;
 
@@ -32,26 +28,36 @@ namespace Spaceinvaders
 
             if (count % moveNow == 0)
             {
-                if (direction.Equals("Right"))
-                    m_pos.X += step;
+                for (int r = 0; r < m_world.rows; r += 1)
+                    for (int c = 0; c < m_world.cols; c += 1)
+                    {
+                        if (direction.Equals("Right"))
+                            m_world.m_recInvaders[r, c].X += step;
 
-                if (direction.Equals("Left"))
-                    m_pos.X -= step;
+                        if (direction.Equals("Left"))
+                            m_world.m_recInvaders[r, c].X -= step;
+                    }
 
-                if (m_pos.X + m_size.X > rightside)
-                {
-                    direction = "Left";
-                    changedirection = "Y";
-                }
-                if (m_pos.X < leftside)
-                {
-                    direction = "Right";
-                    changedirection = "Y";
-                }
+                for (int r = 0; r < m_world.rows; r += 1)
+                    for (int c = 0; c < m_world.cols; c += 1)
+                    {
+                        if (m_world.m_recInvaders[r, c].X + m_world.m_recInvaders[r, c].Width > rightside)
+                        {
+                            direction = "Left";
+                            changedirection = "Y";
+                        }
+                        if (m_world.m_recInvaders[r, c].X < leftside)
+                        {
+                            direction = "Right";
+                            changedirection = "Y";
+                        }
+                    }
 
                 if (changedirection.Equals("Y"))
                 {
-                   m_pos.Y = m_pos.Y + 8;
+                    for (int r = 0; r < m_world.rows; r += 1)
+                        for (int c = 0; c < m_world.cols; c += 1)
+                            m_world.m_recInvaders[r, c].Y = m_world.m_recInvaders[r, c].Y + 32;
                 }
             }
             count += 1;
@@ -94,5 +100,12 @@ namespace Spaceinvaders
 //--------------------------------------------------------------------------------------------------------------
            base.Update(gameTime);  
          }
+        
+        //public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        //{
+
+
+        //    base.Draw(gameTime, spriteBatch);
+        //}
     }
 }
