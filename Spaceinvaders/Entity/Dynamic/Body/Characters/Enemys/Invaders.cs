@@ -100,10 +100,16 @@ namespace Spaceinvaders
 //--------------------------------------------------------------------------------------------------------------
            base.Update(gameTime);  
          }
-        
+
         //public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         //{
+        //    m_world.m_spriteBatch.Begin();
 
+        //    for (int r = 0; r < m_world.rows; r += 1)
+        //        for (int c = 0; c < m_world.cols; c += 1)
+        //            m_world.m_spriteBatch.Draw(m_world.m_texInvader1, m_world.m_recInvaders[r, c], Color.Yellow);
+            
+        //    m_world.m_spriteBatch.End();
 
         //    base.Draw(gameTime, spriteBatch);
         //}

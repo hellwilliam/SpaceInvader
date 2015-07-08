@@ -19,8 +19,6 @@ namespace Spaceinvaders
         public Vector2 m_screenRes = new Vector2(800.0f, 600.0f);
        
         public SpriteFont m_font;
-
-        //int count;
        
         public Texture2D m_texPlayer;
         public Texture2D m_texInvader1;
@@ -52,9 +50,6 @@ namespace Spaceinvaders
 
         protected override void Initialize()
         {
-
-            //count = 0;
-
             base.Initialize();
         }
 
@@ -74,24 +69,23 @@ namespace Spaceinvaders
             //m_font = Content.Load<SpriteFont>(" ");
 
             //m_recInvaders = new Rectangle[rows, cols];
-            //    for (int r = 0; r < rows; r += 1)
-            //        for (int c = 0; c < cols; c += 1)
-            //        {
-            //            m_recInvaders[r, c].Width = m_texInvader1.Width;
-            //            m_recInvaders[r, c].Height = m_texInvader1.Height;
-            //            m_recInvaders[r, c].X = 25 * c;
-            //            m_recInvaders[r, c].Y = 25 * r;
-            //        }
+            
+            //for (int r = 0; r < rows; r += 1)
+            //    for (int c = 0; c < cols; c += 1)
+            //    {
+            //        m_recInvaders[r, c].Width = m_texInvader1.Width;
+            //        m_recInvaders[r, c].Height = m_texInvader1.Height;
+            //        m_recInvaders[r, c].X = 25 * c;
+            //        m_recInvaders[r, c].Y = 25 * r;
+            //    }
 
             m_entities.Add(new Player(this, new Vector2 (m_screenRes.X * 0.5f, m_screenRes.Y * 0.85f), new Vector2(32, 16), m_texPlayer, 125.0f, 10000.0f, 50.0f));
             //m_entities.Add(new Spaceship(this, new Vector2(m_screenRes.X + 32f, m_screenRes.Y * 0.10f), new Vector2(32, 14), m_texSpaceship, 125.0f, 10000.0f, 50.0f, true));
             //m_entities.Add(new Invaders(this, new Vector2 (m_screenRes.X * 0.5f, m_screenRes.Y * 0.1f), new Vector2(16, 16), m_texInvader1));
-            m_entities.Add(new Shield(this, new Vector2(m_screenRes.X * 0.12f, m_screenRes.Y * 0.76f), new Vector2 (60, 45), m_shield));
+            m_entities.Add(new Shield(this, new Vector2(m_screenRes.X * 0.12f, m_screenRes.Y * 0.76f), new Vector2(60, 45), m_shield));
             m_entities.Add(new Shield(this, new Vector2(m_screenRes.X * 0.37f, m_screenRes.Y * 0.76f), new Vector2(60, 45), m_shield));
             m_entities.Add(new Shield(this, new Vector2(m_screenRes.X * 0.62f, m_screenRes.Y * 0.76f), new Vector2(60, 45), m_shield));
             m_entities.Add(new Shield(this, new Vector2(m_screenRes.X * 0.87f, m_screenRes.Y * 0.76f), new Vector2(60, 45), m_shield));
-
-            //m_timeStart = 3.0f;
              
         }
 
@@ -104,18 +98,6 @@ namespace Spaceinvaders
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            //if (m_timeStart < 0.0f)
-            //{
-            //    m_entities.Add(new Spaceship(this, new Vector2(-32f, m_screenRes.Y * 0.10f), new Vector2(32, 14), m_texSpaceship));
-            //}
-
-            //m_timeStart -= gameTime.ElapsedGameTime.TotalSeconds;
-            //if (m_timeStart <= 0.0f)
-            //{
-                //m_entities.Add(new Spaceship(this, new Vector2(-32f, m_screenRes.Y * 0.10f), new Vector2(32, 14), m_texSpaceship));
-            //    Exit();
-            //}
 
             List<Entity> tmp = new List<Entity>(m_entities);
             foreach (Entity e in tmp)
