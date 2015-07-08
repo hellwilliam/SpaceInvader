@@ -13,9 +13,20 @@ namespace Spaceinvaders
 
         public override void Update (GameTime gameTime)
         {
-          m_dir -= Vector2.UnitY;
+            m_pos -= new Vector2(0.0f, 6.5f);
+
+            if (m_pos.Y < 0)
+                isBulletVisible = "No";
             
             base.Update(gameTime);
+        }
+
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            if (isBulletVisible != "No")
+            {
+                base.Draw(gameTime, spriteBatch);
+            }
         }
         
     }

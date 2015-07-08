@@ -9,6 +9,7 @@ namespace Spaceinvaders
     public class Player : Characters
     {
         //int count; //Timer for the bullet
+        Bullet bullet = null;
 
         public Player(World world, Vector2 pos, Vector2 size, Texture2D tex,
                    float maxVel = 200.0f, float accel = 1000.0f, float friction = 5.0f)
@@ -48,7 +49,15 @@ namespace Spaceinvaders
 //        //    //----------------------------------------------------------------------------------------------------------------------
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && !m_world.m_prevKeyboardState.IsKeyDown(Keys.Space))
             {
-                m_world.m_entities.Add(new Bullet(m_world, m_pos, new Vector2(4, 8), m_world.m_texBullet, 200.0f, float.MaxValue, 0.0f));
+                if (bullet == null || (bullet.isBulletVisible == "No"))
+                {
+                    bullet = new Bullet(m_world, m_pos + new Vector2(0, - 20.0f), new Vector2(4, 8), m_world.m_texBullet);
+                    bullet.isBulletVisible = "Yes";
+                    m_world.m_entities.Add(bullet);
+                }
+
+                //if (m_dir.Y - m_world.m_texInvader1.Height < 0)
+                //    isBulletVisible = "No";
             }
             
             base.Update(gameTime);

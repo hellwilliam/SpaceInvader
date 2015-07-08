@@ -28,6 +28,7 @@ namespace Spaceinvaders
         public Texture2D m_texInvader3;
         public Texture2D m_texSpaceship;
         public Texture2D m_texBullet;
+        public Texture2D m_shield;
 
         public Rectangle[,] m_recInvaders;
         public int rows = 5;
@@ -68,12 +69,11 @@ namespace Spaceinvaders
             m_texPlayer = Content.Load<Texture2D>("player");
             m_texSpaceship = Content.Load<Texture2D>("spaceship");
             m_texBullet = Content.Load<Texture2D>("bullet");
+            m_shield = Content.Load<Texture2D>("shield");
 
             //m_font = Content.Load<SpriteFont>(" ");
-            
-            //m_recInvaders = new Rectangle[rows, cols];
 
-            //{
+            //m_recInvaders = new Rectangle[rows, cols];
             //    for (int r = 0; r < rows; r += 1)
             //        for (int c = 0; c < cols; c += 1)
             //        {
@@ -82,11 +82,14 @@ namespace Spaceinvaders
             //            m_recInvaders[r, c].X = 25 * c;
             //            m_recInvaders[r, c].Y = 25 * r;
             //        }
-            //}
 
-            //m_entities.Add(new Player(this, new Vector2 (m_screenRes.X * 0.5f, m_screenRes.Y * 0.85f), new Vector2(32, 16), m_texPlayer, 125.0f, 10000.0f, 50.0f));
+            m_entities.Add(new Player(this, new Vector2 (m_screenRes.X * 0.5f, m_screenRes.Y * 0.85f), new Vector2(32, 16), m_texPlayer, 125.0f, 10000.0f, 50.0f));
             //m_entities.Add(new Spaceship(this, new Vector2(m_screenRes.X + 32f, m_screenRes.Y * 0.10f), new Vector2(32, 14), m_texSpaceship, 125.0f, 10000.0f, 50.0f, true));
-            m_entities.Add(new Invaders(this, new Vector2 (m_screenRes.X * 0.5f, m_screenRes.Y * 0.1f), new Vector2(16, 16), m_texInvader1));
+            //m_entities.Add(new Invaders(this, new Vector2 (m_screenRes.X * 0.5f, m_screenRes.Y * 0.1f), new Vector2(16, 16), m_texInvader1));
+            m_entities.Add(new Shield(this, new Vector2(m_screenRes.X * 0.12f, m_screenRes.Y * 0.76f), new Vector2 (60, 45), m_shield));
+            m_entities.Add(new Shield(this, new Vector2(m_screenRes.X * 0.37f, m_screenRes.Y * 0.76f), new Vector2(60, 45), m_shield));
+            m_entities.Add(new Shield(this, new Vector2(m_screenRes.X * 0.62f, m_screenRes.Y * 0.76f), new Vector2(60, 45), m_shield));
+            m_entities.Add(new Shield(this, new Vector2(m_screenRes.X * 0.87f, m_screenRes.Y * 0.76f), new Vector2(60, 45), m_shield));
 
             //m_timeStart = 3.0f;
              

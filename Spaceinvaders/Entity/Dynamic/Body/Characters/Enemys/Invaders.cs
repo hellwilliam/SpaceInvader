@@ -12,10 +12,6 @@ namespace Spaceinvaders
         const int moveNow = 30; // How many seconds you want to move the invaders
         const int step = 16; //How many pixels you want the invaders to move
 
-        //Rectangle[,] m_recInvaders;
-        //int rows = 5;
-        //int cols = 10;
-
         public Invaders(World world, Vector2 pos, Vector2 size, Texture2D tex)
             : base(world, pos, size, tex) { }
                
@@ -61,6 +57,10 @@ namespace Spaceinvaders
                 }
             }
             count += 1;
+
+            //Colocar a lógica das "bullets" dos invaders aqui.
+
+
 //----------------------------------------------------------------------------------------------------------------
             //if ((m_pos.X >= 0) && (m_pos.X <= m_screenRes.X - 32))
             //{
