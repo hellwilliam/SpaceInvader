@@ -10,8 +10,6 @@ namespace Spaceinvaders
     {
         public GraphicsDeviceManager m_graphics;
 
-        public string direction = "Right";
-
         public bool isVisible;
 
         public Vector2 m_screenRes = new Vector2(800, 600);

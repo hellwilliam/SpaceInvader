@@ -8,57 +8,36 @@ namespace Spaceinvaders
 {
     public class Invaders : Characters
     {
+         const int ROWS = 5;
+         const int COLS = 11;
+
         int count; //Timer for the invaders
         const int moveNow = 30; // How many seconds you want to move the invaders
         const int step = 16; //How many pixels you want the invaders to move
+        public Rectangle[,] m_recInvaders;
+
+        bool IsGoingLeft;
 
         public Invaders(World world, Vector2 pos, Vector2 size, Texture2D tex)
-            : base(world, pos, size, tex) { }
+            : base(world, pos, size, tex) {
+
+                m_recInvaders = new Rectangle[ROWS, COLS];
+
+                for (int r = 0; r < ROWS; r += 1)
+                    for (int c = 0; c < COLS; c += 1)
+                    {
+                        m_recInvaders[r, c].Width = m_world.m_texInvader1.Width;
+                        m_recInvaders[r, c].Height = m_world.m_texInvader1.Height;
+                        m_recInvaders[r, c].X = 25 * c;
+                        m_recInvaders[r, c].Y = 25 * r;
+                    }
+        }
                
         public override void Update(GameTime gameTime)
         {
-            int rightside = (int)m_screenRes.X; // Que bruxaria foi essa que o (int) antes do argumento deu certo???
-            int leftside = 16;
-
-            string changedirection = "N";
-
-            if (count % moveNow == 0)
-            {
-                for (int r = 0; r < m_world.rows; r += 1)
-                    for (int c = 0; c < m_world.cols; c += 1)
-                    {
-                        if (direction.Equals("Right"))
-                            m_world.m_recInvaders[r, c].X += step;
-
-                        if (direction.Equals("Left"))
-                            m_world.m_recInvaders[r, c].X -= step;
-                    }
-
-                for (int r = 0; r < m_world.rows; r += 1)
-                    for (int c = 0; c < m_world.cols; c += 1)
-                    {
-                        if (m_world.m_recInvaders[r, c].X + m_world.m_recInvaders[r, c].Width > rightside)
-                        {
-                            direction = "Left";
-                            changedirection = "Y";
-                        }
-                        if (m_world.m_recInvaders[r, c].X < leftside)
-                        {
-                            direction = "Right";
-                            changedirection = "Y";
-                        }
-                    }
-
-                if (changedirection.Equals("Y"))
-                {
-                    for (int r = 0; r < m_world.rows; r += 1)
-                        for (int c = 0; c < m_world.cols; c += 1)
-                            m_world.m_recInvaders[r, c].Y = m_world.m_recInvaders[r, c].Y + 32;
-                }
-            }
-            count += 1;
-
-            //Colocar a lógica das "bullets" dos invaders aqui.
+            Move();
+            FireBullets();
+            Collision();
 
 
 //----------------------------------------------------------------------------------------------------------------
@@ -101,17 +80,68 @@ namespace Spaceinvaders
            base.Update(gameTime);  
          }
 
-        //public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
-        //{
-        //    m_world.m_spriteBatch.Begin();
+        void Move()
+        {
+            var rightside = (int)m_screenRes.X; // Que bruxaria foi essa que o (int) antes do argumento deu certo???
+            int leftside = 16;
 
-        //    for (int r = 0; r < m_world.rows; r += 1)
-        //        for (int c = 0; c < m_world.cols; c += 1)
-        //            m_world.m_spriteBatch.Draw(m_world.m_texInvader1, m_world.m_recInvaders[r, c], Color.Yellow);
-            
-        //    m_world.m_spriteBatch.End();
+            bool changedirection = false;
 
-        //    base.Draw(gameTime, spriteBatch);
-        //}
+            if (count % moveNow == 0)
+            {
+                for (int r = 0; r < ROWS; r += 1)
+                    for (int c = 0; c < COLS; c += 1)
+                        if (IsGoingLeft)
+                            m_recInvaders[r, c].X -= step;
+                        else
+                            m_recInvaders[r, c].X += step;
+
+                for (int r = 0; r < ROWS; r += 1)
+                    for (int c = 0; c < COLS; c += 1)
+                    {
+                        if (m_recInvaders[r, c].X + m_recInvaders[r, c].Width > rightside)
+                        {
+                            IsGoingLeft = true;
+                            changedirection = true;
+                        }
+                        if (m_recInvaders[r, c].X < leftside)
+                        {
+                            IsGoingLeft = false;
+                            changedirection = true;
+                        }
+                    }
+
+                if (changedirection)
+                {
+                    for (int r = 0; r < ROWS; r += 1)
+                        for (int c = 0; c < COLS; c += 1)
+                        {
+                            m_recInvaders[r, c].Y = m_recInvaders[r, c].Y + 32;
+                            if (IsGoingLeft)
+                                m_recInvaders[r, c].X -= step;
+                            else
+                                m_recInvaders[r, c].X += step;
+                        }
+                }
+            }
+            count += 1;
+        }
+
+        void FireBullets()
+        {
+            //Colocar a lógica das "bullets" dos invaders aqui.
+        }
+
+        void Collision()
+        {
+
+        }
+
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            for (int r = 0; r < ROWS; r += 1)
+                for (int c = 0; c < COLS; c += 1)
+                    m_world.m_spriteBatch.Draw(m_world.m_texInvader1, m_recInvaders[r, c], Color.Yellow);
+        }
     }
 }
