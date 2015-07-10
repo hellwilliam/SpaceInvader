@@ -8,8 +8,8 @@ namespace Spaceinvaders
 {
     public class Invaders : Characters
     {
-         const int ROWS = 5;
-         const int COLS = 11;
+        const int ROWS = 5;
+        const int COLS = 11;
 
         int count; //Timer for the invaders
         const int moveNow = 30; // How many seconds you want to move the invaders
@@ -36,9 +36,10 @@ namespace Spaceinvaders
         public override void Update(GameTime gameTime)
         {
             Move();
-            FireBullets();
-            Collision();
 
+            FireBullets();
+
+            Collision();
 
 //----------------------------------------------------------------------------------------------------------------
             //if ((m_pos.X >= 0) && (m_pos.X <= m_screenRes.X - 32))
@@ -125,6 +126,20 @@ namespace Spaceinvaders
                 }
             }
             count += 1;
+
+            //Prepara o terreno para os invaders acelerarem
+            //int count = 0;
+            //for (int r = 0; r < rows; r += 1)
+            //    for (int c = 0; c < cols; c += 1)
+            //        if (invadersalive[r, c].Equals("Yes"))
+            //            count = count + 1;
+
+            //Verifica se metade dos invaders esta vivo
+            //if (count > (rows * cols / 2))
+            //    invaderspeed = 2;
+
+            //if (count < (rows * cols / 3))
+            //    invaderspeed = invaderspeed + 1;
         }
 
         void FireBullets()
