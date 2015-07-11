@@ -11,7 +11,7 @@ namespace Spaceinvaders
        public Shield(World world, Vector2 pos, Vector2 size, Texture2D tex)
             : base(world, pos, size, tex) { }
 
-       public bool collides;
+       //bool collides;
 
         public override void Update(GameTime gameTime)
         {

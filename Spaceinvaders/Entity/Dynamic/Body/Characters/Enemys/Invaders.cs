@@ -11,13 +11,15 @@ namespace Spaceinvaders
         const int ROWS = 5;
         const int COLS = 11;
 
+        //string isAlienAlive = "Yes";
+
         int count; //Timer for the invaders
         const int moveNow = 30; // How many seconds you want to move the invaders
-        const int step = 16; //How many pixels you want the invaders to move
+        int step = 8; //How many pixels you want the invaders to move
         public Rectangle[,] m_recInvaders;
-
+        
         bool IsGoingLeft;
-
+      
         public Invaders(World world, Vector2 pos, Vector2 size, Texture2D tex)
             : base(world, pos, size, tex) {
 
@@ -28,7 +30,7 @@ namespace Spaceinvaders
                     {
                         m_recInvaders[r, c].Width = m_world.m_texInvader1.Width;
                         m_recInvaders[r, c].Height = m_world.m_texInvader1.Height;
-                        m_recInvaders[r, c].X = 25 * c;
+                        m_recInvaders[r, c].X = 30 * c;
                         m_recInvaders[r, c].Y = 25 * r;
                     }
         }
@@ -40,6 +42,8 @@ namespace Spaceinvaders
             FireBullets();
 
             Collision();
+
+            SpeedUp();
 
 //----------------------------------------------------------------------------------------------------------------
             //if ((m_pos.X >= 0) && (m_pos.X <= m_screenRes.X - 32))
@@ -120,26 +124,13 @@ namespace Spaceinvaders
                             m_recInvaders[r, c].Y = m_recInvaders[r, c].Y + 32;
                             if (IsGoingLeft)
                                 m_recInvaders[r, c].X -= step;
+
                             else
                                 m_recInvaders[r, c].X += step;
                         }
                 }
             }
             count += 1;
-
-            //Prepara o terreno para os invaders acelerarem
-            //int count = 0;
-            //for (int r = 0; r < rows; r += 1)
-            //    for (int c = 0; c < cols; c += 1)
-            //        if (invadersalive[r, c].Equals("Yes"))
-            //            count = count + 1;
-
-            //Verifica se metade dos invaders esta vivo
-            //if (count > (rows * cols / 2))
-            //    invaderspeed = 2;
-
-            //if (count < (rows * cols / 3))
-            //    invaderspeed = invaderspeed + 1;
         }
 
         void FireBullets()
@@ -150,13 +141,61 @@ namespace Spaceinvaders
         void Collision()
         {
 
+            if (m_world.m_texInvader1.Bounds.Intersects(m_world.m_texBullet.Bounds))
+            {
+
+            }
+
+            //Vector2 myMin = m_pos - m_size * 0.5f;
+            //Vector2 myMax = m_pos + m_size * 0.5f;
+
+            //bool collides = false;
+
+            //foreach (Entity e in m_world.m_entities)
+            //{
+            //    if ((e is Dynamic) && (e != this))
+            //    {
+            //        if (((Dynamic)e).TestOverlapRect(myMin, myMax))
+            //        {
+            //            collides = true;
+            //            ((Bullet)e).isBulletVisible = "No";
+            //            break;
+            //        }
+            //    }
+            //}
+
+            //if (collides)
+            //    m_color = Color.Yellow;
+            //else
+            //    m_color = Color.Red;
+        }
+
+        void SpeedUp()
+        {
+        //    //Prepara o terreno para os invaders acelerarem
+        //    int count = 0;
+        //    for (int r = 0; r < ROWS; r += 1)
+        //        for (int c = 0; c < COLS; c += 1)
+        //            if (invadersalive[r, c].Equals("Yes"))
+        //                count = count + 1;
+
+        //    //Verifica se metade dos invaders esta vivo
+        //    if (count > (ROWS * COLS / 2))
+        //        step = 16;
+
+        //    if (count < (ROWS * COLS / 3))
+        //        step = step + 4;
+
+        //    if (count < (ROWS * COLS / 5))
+        //        step = step + 8;
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             for (int r = 0; r < ROWS; r += 1)
                 for (int c = 0; c < COLS; c += 1)
-                    m_world.m_spriteBatch.Draw(m_world.m_texInvader1, m_recInvaders[r, c], Color.Yellow);
+                    //if (isAlienAlive.Equals("Yes"))
+                        m_world.m_spriteBatch.Draw(m_world.m_texInvader1, m_recInvaders[r, c], Color.Yellow);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Spaceinvaders
 
         public bool isVisible;
 
-        public Vector2 m_screenRes = new Vector2(800, 600);
+        public Vector2 m_screenRes = new Vector2(448, 512);
 
         public World m_world;
 
